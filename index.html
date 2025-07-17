@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pembayaran ke Rian</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: white;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px 40px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 15px 0;
+    }
+
+    .number {
+      font-size: 1.6rem;
+      font-weight: bold;
+      background: white;
+      color: #0072ff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: white;
+      color: #0072ff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    button:hover {
+      background: #e0e0e0;
+      transform: scale(1.05);
+    }
+
+    .copied {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #c0ffc0;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        width: 90%;
+        padding: 20px;
+      }
+
+      .number {
+        font-size: 1.2rem;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Transfer Pembayaran</h1>
+    <p>Silakan kirim pembayaran ke:</p>
+    <p><strong>Nama:</strong> Rian</p>
+    <p class="number" id="danaNumber">0838883838</p><br>
+    <button onclick="copyNumber()">Salin Nomor DANA</button>
+    <p class="copied" id="copyMsg" style="display:none;">✅ Nomor berhasil disalin!</p>
+  </div>
+
+  <script>
+    function copyNumber() {
+      const number = document.getElementById('danaNumber').innerText;
+      navigator.clipboard.writeText(number).then(() => {
+        const msg = document.getElementById('copyMsg');
+        msg.style.display = 'block';
+        setTimeout(() => {
+          msg.style.display = 'none';
+        }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
